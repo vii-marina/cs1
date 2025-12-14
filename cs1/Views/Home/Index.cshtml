@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Sprint 13 - Home";
+}
+
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Sprint 13</h1>
+            <p class="col-md-8 fs-4">This is the Sprint 13 demo site. Use the links below to navigate to the tasks implemented in Razor views.</p>
+            <div class="d-flex gap-2">
+                <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="SprintTasks">Sprint Tasks</a>
+                <a class="btn btn-outline-secondary btn-lg" href="https://github.com/yourusername/yourproject" target="_blank">Our project</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Greetings</h5>
+                    <p class="card-text">View that demonstrates DateTime usage and branching for morning/evening messages.</p>
+                    <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Greetings">Open</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Product Info</h5>
+                    <p class="card-text">A simple product list created in the view and displayed in a table.</p>
+                    <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="ProductInfo">Open</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Shopping</h5>
+                    <p class="card-text">Shopping list, supermarkets and shopping cart sample forms.</p>
+                    <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="ShoppingList">Shopping List</a>
+                    <a class="btn btn-sm btn-outline-primary ms-2" asp-controller="Home" asp-action="ShoppingCart">Shopping Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

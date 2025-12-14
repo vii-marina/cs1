@@ -1,0 +1,20 @@
+@model Dictionary<string,int>
+@{
+    ViewData["Title"] = "Shopping List";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Shopping List</h3>
+        <p class="card-text">Total items: <strong>@Model.Count</strong></p>
+        <ul class="list-group list-group-flush mt-3">
+        @foreach (var kv in Model)
+        {
+            <li class="list-group-item">@kv.Key - @kv.Value</li>
+        }
+        </ul>
+    </div>
+    <div class="card-footer">
+        @await Html.PartialAsync("_TimeToBuy")
+    </div>
+</div>

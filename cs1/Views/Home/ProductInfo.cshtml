@@ -1,0 +1,33 @@
+@functions {
+    public class Product { public string Name { get; set; } public double Price { get; set; } }
+}
+
+@{
+    ViewData["Title"] = "Product Info";
+    var products = new List<Product>
+    {
+        new Product { Name = "Apple", Price = 0.5 },
+        new Product { Name = "Bread", Price = 1.2 },
+        new Product { Name = "Milk", Price = 0.9 }
+    };
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Products</h3>
+        <table class="table mt-3">
+            <thead>
+                <tr><th>Name</th><th>Price</th></tr>
+            </thead>
+            <tbody>
+            @foreach (var p in products)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Price.ToString("C")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

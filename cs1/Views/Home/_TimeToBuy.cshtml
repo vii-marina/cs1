@@ -1,0 +1,4 @@
+@inject cs1.Services.ITimeService TimeService
+<div class="small text-muted">
+    Time to buy tomorrow: <strong>@TimeService.GetTimeForTomorrow()</strong>
+</div>

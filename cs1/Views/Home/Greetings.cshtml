@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Greetings";
+    var now = (DateTime)ViewData["Now"];
+    var name = (string)ViewData["UserName"];
+    var isMorning = (bool)ViewData["IsMorning"];
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Greetings</h3>
+        <p class="card-text">Hello, <strong>@name</strong>!</p>
+        <p class="card-text">Today is <strong>@now.ToLongDateString()</strong> and current time is <strong>@now.ToLongTimeString()</strong>.</p>
+        @if (isMorning)
+        {
+            <div class="alert alert-info">Good morning!</div>
+        }
+        else
+        {
+            <div class="alert alert-secondary">Good evening!</div>
+        }
+    </div>
+</div>

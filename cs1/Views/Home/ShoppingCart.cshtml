@@ -1,0 +1,54 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Shopping Cart";
+    var markets = ViewBag.SuperMarkets as string[] ?? Array.Empty<string>();
+    var items = ViewBag.Items as string[] ?? Array.Empty<string>();
+    var dates = ViewBag.ShippingDates as DateTime[] ?? new DateTime[0];
+
+    var marketList = markets.Select(m => new SelectListItem(m, m)).ToList();
+    var itemList = items.Select(i => new SelectListItem(i, i)).ToList();
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Shopping Cart</h3>
+        <form method="post" asp-action="ShoppingCart">
+            <div class="mb-3">
+                <label class="form-label">Customer Name</label>
+                @Html.TextBox("customerName", null, new { @class = "form-control" })
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Supermarket</label>
+                @Html.DropDownList("supermarket", marketList, new { @class = "form-select" })
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Shipping Date</label>
+                <div>
+                    @for (int i = 0; i < dates.Length; i++)
+                    {
+                        <div class="form-check form-check-inline">
+                            @Html.RadioButton("shippingDate", dates[i].ToString("o"), i == 0, new { @class = "form-check-input" })
+                            <label class="form-check-label">@dates[i].ToShortDateString()</label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Items</label>
+                @Html.ListBox("selectedItems", itemList, new { @class = "form-select", size = 4 })
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success mt-3">
+        <p>@ViewBag.Message</p>
+        <p><strong>Customer:</strong> @ViewBag.CustomerName</p>
+        <p><strong>Supermarket:</strong> @ViewBag.Supermarket</p>
+        <p><strong>Shipping date:</strong> @ViewBag.ShippingDate</p>
+        <p><strong>Items:</strong> @string.Join(", ", (string[])ViewBag.SelectedItems)</p>
+    </div>
+}
