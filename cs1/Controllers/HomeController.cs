@@ -19,7 +19,6 @@ namespace cs1.Controllers
 
         public IActionResult Greetings()
         {
-            // Prepare view data for greetings
             var now = DateTime.Now;
             ViewData["Now"] = now;
             ViewData["UserName"] = "Guest";
@@ -34,7 +33,6 @@ namespace cs1.Controllers
 
         public IActionResult SuperMarkets()
         {
-            // supply list via ViewBag
             var markets = new[] { "FreshMart", "DailyFoods", "CornerStore", "SuperValue" };
             ViewBag.SuperMarkets = markets;
             return View();
@@ -42,7 +40,6 @@ namespace cs1.Controllers
 
         public IActionResult ShoppingList()
         {
-            // dictionary of product -> quantity
             var dict = new Dictionary<string, int>
             {
                 ["Apples"] = 4,
@@ -59,11 +56,9 @@ namespace cs1.Controllers
             var markets = new[] { "FreshMart", "DailyFoods", "CornerStore", "SuperValue" };
             ViewBag.SuperMarkets = markets;
 
-            // items for listbox - reuse shopping list keys
             var items = new[] { "Apples", "Bread", "Milk", "Eggs" };
             ViewBag.Items = items;
 
-            // shipping date options (today + next 2 days)
             var dates = new[] { DateTime.Today, DateTime.Today.AddDays(1), DateTime.Today.AddDays(2) };
             ViewBag.ShippingDates = dates;
 
